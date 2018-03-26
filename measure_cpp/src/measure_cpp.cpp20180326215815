@@ -1,0 +1,187 @@
+﻿// -*- C++ -*-
+/*!
+ * @file  measure_cpp.cpp
+ * @brief measurement of the processing time
+ * @date $Date$
+ *
+ * @author n-miyamoto@aist.go.jp
+ *
+ * MIT
+ *
+ * $Id$
+ */
+
+#include "measure_cpp.h"
+
+// Module specification
+// <rtc-template block="module_spec">
+static const char* measure_cpp_spec[] =
+  {
+    "implementation_id", "measure_cpp",
+    "type_name",         "measure_cpp",
+    "description",       "measurement of the processing time",
+    "version",           "1.0.0",
+    "vendor",            "Nobuhiko Miyamoto",
+    "category",          "Sample",
+    "activity_type",     "PERIODIC",
+    "kind",              "DataFlowComponent",
+    "max_instance",      "1",
+    "language",          "C++",
+    "lang_type",         "compile",
+    // Configuration variables
+    "conf.default.ior_str", "0",
+    "conf.default.exe_enable", "0",
+    "conf.default.max_count", "1000",
+
+    // Widget
+    "conf.__widget__.ior_str", "text",
+    "conf.__widget__.exe_enable", "radio",
+    "conf.__widget__.max_count", "text",
+    // Constraints
+    "conf.__constraints__.exe_enable", "(0,1)",
+
+    "conf.__type__.ior_str", "string",
+    "conf.__type__.exe_enable", "int",
+    "conf.__type__.max_count", "int",
+
+    ""
+  };
+// </rtc-template>
+
+/*!
+ * @brief constructor
+ * @param manager Maneger Object
+ */
+measure_cpp::measure_cpp(RTC::Manager* manager)
+    // <rtc-template block="initializer">
+  : RTC::DataFlowComponentBase(manager)
+
+    // </rtc-template>
+{
+}
+
+/*!
+ * @brief destructor
+ */
+measure_cpp::~measure_cpp()
+{
+}
+
+
+
+RTC::ReturnCode_t measure_cpp::onInitialize()
+{
+  // Registration: InPort/OutPort/Service
+  // <rtc-template block="registration">
+  // Set InPort buffers
+  
+  // Set OutPort buffer
+  
+  // Set service provider to Ports
+  
+  // Set service consumers to Ports
+  
+  // Set CORBA Service Ports
+  
+  // </rtc-template>
+
+  // <rtc-template block="bind_config">
+  // Bind variables and configuration variable
+  bindParameter("ior_str", m_ior_str, "0");
+  bindParameter("exe_enable", m_exe_enable, "0");
+  bindParameter("max_count", m_max_count, "1000");
+  // </rtc-template>
+  
+  return RTC::RTC_OK;
+}
+
+/*
+RTC::ReturnCode_t measure_cpp::onFinalize()
+{
+  return RTC::RTC_OK;
+}
+*/
+
+/*
+RTC::ReturnCode_t measure_cpp::onStartup(RTC::UniqueId ec_id)
+{
+  return RTC::RTC_OK;
+}
+*/
+
+/*
+RTC::ReturnCode_t measure_cpp::onShutdown(RTC::UniqueId ec_id)
+{
+  return RTC::RTC_OK;
+}
+*/
+
+
+RTC::ReturnCode_t measure_cpp::onActivated(RTC::UniqueId ec_id)
+{
+  return RTC::RTC_OK;
+}
+
+
+RTC::ReturnCode_t measure_cpp::onDeactivated(RTC::UniqueId ec_id)
+{
+  return RTC::RTC_OK;
+}
+
+
+RTC::ReturnCode_t measure_cpp::onExecute(RTC::UniqueId ec_id)
+{
+  return RTC::RTC_OK;
+}
+
+/*
+RTC::ReturnCode_t measure_cpp::onAborting(RTC::UniqueId ec_id)
+{
+  return RTC::RTC_OK;
+}
+*/
+
+/*
+RTC::ReturnCode_t measure_cpp::onError(RTC::UniqueId ec_id)
+{
+  return RTC::RTC_OK;
+}
+*/
+
+/*
+RTC::ReturnCode_t measure_cpp::onReset(RTC::UniqueId ec_id)
+{
+  return RTC::RTC_OK;
+}
+*/
+
+/*
+RTC::ReturnCode_t measure_cpp::onStateUpdate(RTC::UniqueId ec_id)
+{
+  return RTC::RTC_OK;
+}
+*/
+
+/*
+RTC::ReturnCode_t measure_cpp::onRateChanged(RTC::UniqueId ec_id)
+{
+  return RTC::RTC_OK;
+}
+*/
+
+
+
+extern "C"
+{
+ 
+  void measure_cppInit(RTC::Manager* manager)
+  {
+    coil::Properties profile(measure_cpp_spec);
+    manager->registerFactory(profile,
+                             RTC::Create<measure_cpp>,
+                             RTC::Delete<measure_cpp>);
+  }
+  
+};
+
+
