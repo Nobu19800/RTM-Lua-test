@@ -42,22 +42,22 @@ if __name__ == "__main__":
   poaManager.activate()
 
   if lang == "python":
-      com = "python mesure_python.py -o Category.mesure_python0.conf.default.ior_str:" + ior
+      com = "python measure_python/measure_python.py -o Category.measure_python0.conf.default.ior_str:" + ior
   elif lang == "lua":
       if os.name == 'posix':
-          com = "lua mesure_lua.lua -o Category.mesure_lua0.conf.default.ior_str:" + ior
+          com = "lua measure_lua/measure_lua.lua -o Category.measure_lua0.conf.default.ior_str:" + ior
       elif os.name == 'nt':
-          com = "\"openrtm-lua-0.2.0(x64)\\bin\\lua\" mesure_lua.lua -o Category.mesure_lua0.conf.default.ior_str:" + ior
+          com = "\"openrtm-lua-0.2.0(x64)\\bin\\lua\" measure_lua/measure_lua.lua -o Category.measure_lua0.conf.default.ior_str:" + ior
   elif lang == "luajit":
       if os.name == 'posix':
-          com = "luajit mesure_lua.lua -o Category.mesure_lua0.conf.default.ior_str:" + ior
+          com = "luajit measure_luajit/measure_luajit.lua -o Category.measure_luajit0.conf.default.ior_str:" + ior
       elif os.name == 'nt':
-          com = "\"openrtm-lua-0.2.0(LuaJITx64)\\bin\\luajit\" mesure_lua.lua -o Category.mesure_lua0.conf.default.ior_str:" + ior
+          com = "\"openrtm-lua-0.2.0(LuaJITx64)\\bin\\luajit\" measure_luajit/measure_luajit.lua -o Category.measure_luajit0.conf.default.ior_str:" + ior
   else:
       if os.name == 'posix':
-          com = "mesure_cpp/build/src/mesure_cppComp -o Category.mesure_cpp0.conf.default.ior_str:" + ior
+          com = "measure_cpp/build/src/measure_cppComp -o Category.measure_cpp0.conf.default.ior_str:" + ior
       elif os.name == 'nt':
-          com = "mesure_cpp\\build\\src\\Release\\mesure_cppComp -o Category.mesure_cpp0.conf.default.ior_str:" + ior
+          com = "measure_cpp\\build\\src\\Release\\measure_cppComp -o Category.measure_cpp0.conf.default.ior_str:" + ior
 
   if os.name == 'posix':
     com = com.split(" ")
