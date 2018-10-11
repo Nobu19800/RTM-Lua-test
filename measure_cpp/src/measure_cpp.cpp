@@ -95,6 +95,8 @@ RTC::ReturnCode_t measure_cpp::onInitialize()
   bindParameter("max_count", m_max_count, "1000");
   // </rtc-template>
 
+  m_configsets.update("default");
+
   if (m_ior_str.length() > 10)
   {
 	  CORBA::ORB_var orb = ::RTC::Manager::instance().getORB();
